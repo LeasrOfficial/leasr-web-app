@@ -4,6 +4,7 @@ import bckgrnd from '../img/san-francisco-bridge-photo.jpg';
 import mitch from '../img/mitch.jpg';
 import zach from '../img/zach.JPG';
 import andrew from '../img/andrew.jpeg';
+import myles from '../img/myles.JPG';
 import Figure from 'react-bootstrap/Figure';
 
 class Meet extends React.Component {
@@ -31,7 +32,7 @@ class Meet extends React.Component {
                         <Figure.Image
                             width={200}
                             height={220}
-                            alt="Mitch"
+                            alt="Ben"
                             src={mitch}
                         />
                         <h5>Ben Dreyer</h5>
@@ -43,7 +44,7 @@ class Meet extends React.Component {
                         <Figure.Image
                             width={200}
                             height={220}
-                            alt="Mitch"
+                            alt="Paul"
                             src={mitch}
                         />
                         <h5>Paul Mason</h5>
@@ -55,8 +56,8 @@ class Meet extends React.Component {
                         <Figure.Image
                             width={200}
                             height={220}
-                            alt="Mitch"
-                            src={mitch}
+                            alt="Myles"
+                            src={myles}
                         />
                         <h5>Myles Hansen</h5>
                         <Figure.Caption className="text-success">
