@@ -1,0 +1,39 @@
+
+
+
+.menu{
+    height:1em;
+  }
+.table{
+    display: table;
+    margin: 0 auto;
+}
+.hor_lst{
+    text-align: center;
+    min-width: 0px;
+    list-style: none;
+    font-size: 1.5em;
+    padding: .3em;
+    margin: 1em;
+}
+.hor_lst li{
+    display: inline;
+    padding:.3em;
+}
+
+.hor_lst img{
+    display: inline;
+    
+}
+
+.hor_lst h1{
+    display:inline;
+}
+
+@media only screen and (max-width: 480px) {
+    /* horizontal scrollbar for tables if mobile screen */
+    .tablemobile {
+        overflow-x: auto;
+        display: block;
+    }
+}
