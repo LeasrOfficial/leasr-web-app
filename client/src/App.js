@@ -57,7 +57,7 @@ function App() {
               </Link>
           </Navbar.Brand>
           <Nav className="ml-auto w-25">
-              <Link className="pl-4 text-success">Create Listing</Link>
+              <Link className="pl-4 text-success ml-auto">Create Listing</Link>
               {isAuthenticated
                 ? <>
                     <Link className="pl-4 text-success" to="/settings"><NavItem>Settings</NavItem></Link>
