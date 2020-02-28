@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import {
   ReactiveBase,
   DataSearch,
@@ -13,21 +13,17 @@ import "./Styles/Search.css";
 
 class App extends Component {
     onPopoverClick = function(data) {
-        const [index, setIndex] = useState(0);
-        const [direction, setDirection] = useState(null);
-
-        const handleSelect = (selectedIndex, e) => {
-            setIndex(selectedIndex);
-            setDirection(e.direction);
-        };
         return (
             <div className="p-2">
-                <Carousel activeIndex={index} direction={direction} onSelect={handleSelect}>
+                <Carousel slide={false}>
                     <Carousel.Item>
-                        <img src={data.image} alt={data.name} height="185" width="263" />
+                        <img className="d-block w-100" src={data.image} alt={data.name} height="185" width="263" />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img className="d-block w-100" src={data.image} alt={data.name} height="185" width="263" />
                     </Carousel.Item>
                 </Carousel>
-                <div className="extra-info-container text-left">
+                <div className="w-100 extra-info-container text-left">
                     <div className="type-container info">
                         {data.room_type}-{data.beds} bed(s)
                     </div>
@@ -190,11 +186,15 @@ class App extends Component {
                                 <div className="card-container">
                                 {hits.map(data => (
                                     <div key={data._id} className="card">
-                                    <div
-                                        className="card__image"
-                                        style={{ backgroundImage: `url(${data.image})` }}
-                                        alt={data.name}
-                                    />
+                                        <Carousel slide={false}>
+                                            <Carousel.Item>
+                                                <div
+                                                    className="card__image"
+                                                    style={{ backgroundImage: `url(${data.image})` }}
+                                                    alt={data.name}
+                                                />
+                                            </Carousel.Item>
+                                        </Carousel>
                                     <div>
                                         <h5>{data.name}</h5>
                                         <div className="card__price">${data.price}</div>
