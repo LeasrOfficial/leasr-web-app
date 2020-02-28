@@ -3,7 +3,7 @@ import {
   ReactiveBase,
   DataSearch,
   NumberBox,
-  RangeSlider,
+  RangeInput,
   SingleRange
 } from "@appbaseio/reactivesearch";
 import  { ReactiveGoogleMap } from "@appbaseio/reactivemaps";
@@ -32,36 +32,36 @@ class App extends Component {
         return (
             <div className="main-container">
                 <ReactiveBase
-                    app="leasr-alpha"
-                    credentials="Wtg8PwyGR:4ec1b158-b62d-4624-8f82-47543b160efe"
+                    app="subleasr-test-app"
+                    credentials="ZmKpHSlRT:defa23b4-dc37-49dd-82fd-204038f44192"
                     type="listing"
                     theme={{
                         colors: {
                             primaryColor: "#64d334"
                         }
                     }}
-                    mapKey="AIzaSyAKfJ8YTpNS5trRgKEy8Jj1XxiYCPBBYBM"
+                    mapKey="AIzaSyAWKr64Pz0dpS1oVttJ2vUl6Ep_YcWTdSk"
                 >
                     <div className="filters-search-container">
                         <div className="filter-container">
                             <div className="dropdown">
                                 <button className="button">Price</button>
                                 <div className="dropdown-content">
-                                    <RangeSlider
+                                    <RangeInput
                                         componentId="PriceSensor"
                                         dataField="price"
                                         title="Price Range"
                                         range={{
                                             start: 500,
-                                            end: 2000
+                                            end: 10000
                                         }}
                                         rangeLabels={{
                                             start: "$500",
-                                            end: "$2000"
+                                            end: "$10000"
                                         }}
                                         defaultValue={{
                                             start: 500,
-                                            end: 2000
+                                            end: 10000
                                         }}
                                         stepValue={10}
                                         interval={20}
@@ -132,16 +132,74 @@ class App extends Component {
                     </div>
 
                     <div className="result-map-container">
-                        <ReactiveGoogleMap
-                            componentId="map"
-                            dataField="location"
-                            react={{
-                                and: 'places',
-                            }}
-                            renderData={result => ({
-                                label: result.mag,
-                            })}
-                            style={{height: '90.5vh'}}
+                    <ReactiveGoogleMap
+                        componentId="map"
+                        dataField="location"
+                        defaultZoom={13}
+                        pagination
+                        onPageChange={() => {
+                            window.scrollTo(0, 0);
+                        }}
+                        style={{
+                            width: "100%",
+                            height: "100vh"
+                        }}
+                        onPopoverClick={this.onPopoverClick}
+                        className="rightCol"
+                        showMarkerClusters={false}
+                        showSearchAsMove={false}
+                        innerClass={{
+                            label: "label"
+                        }}
+                        renderAllData={(
+                            hits,
+                            streamHits,
+                            loadMore,
+                            renderMap,
+                            renderPagination
+                        ) => (
+                            <div style={{ display: "flex"}}>
+                            <div>
+                                <div className="card-container">
+                                {hits.map(data => (
+                                    <div key={data._id} className="card">
+                                    <div
+                                        className="card__image"
+                                        style={{ backgroundImage: `url(${data.image})` }}
+                                        alt={data.name}
+                                    />
+                                    <div>
+                                        <h5>{data.name}</h5>
+                                        <div className="card__price">${data.price}</div>
+                                        <p className="card__info">
+                                        {data.room_type} · {data.accommodates} guests
+                                        </p>
+                                    </div>
+                                    </div>
+                                ))}
+                                </div>
+                                <div>{renderPagination()}</div>
+                            </div>
+                            <div className="map-container">{renderMap()}</div>
+                            </div>
+                        )}
+                        renderData={data => ({
+                            label: (
+                            <div
+                                className="marker"
+                                style={{
+                                width: 90,
+                                display: "block",
+                                textAlign: "center"
+                                }}
+                            >
+                                <div className="extra-info">{data.name}</div>${data.price}
+                            </div>
+                            )
+                        })}
+                        react={{
+                            and: ["GuestSensor", "PriceSensor", "DateRangeSensor", "search"]
+                        }}
                         />
                     </div>
                 </ReactiveBase>

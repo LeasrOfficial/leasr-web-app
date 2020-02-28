@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Footer from './Components/Footer.js';
+// import Footer from './Components/Footer.js';
 import Login from './Components/Account/Login';
 import Jumbo from './Components/Home/Jumbo';
 import Search from './Components/Listing';
@@ -34,7 +34,7 @@ export default function Routes({ appProps }) {
 
             <Route component={NotFound} />
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </div>
   );
 }
