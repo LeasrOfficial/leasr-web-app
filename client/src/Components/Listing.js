@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component, useState } from "react";
 import {
   ReactiveBase,
   DataSearch,
@@ -6,23 +6,34 @@ import {
   RangeInput,
   SingleRange
 } from "@appbaseio/reactivesearch";
+import { Carousel } from "react-bootstrap"
 import  { ReactiveGoogleMap } from "@appbaseio/reactivemaps";
+import searchimg from './img/search-solid.svg';
 import "./Styles/Search.css";
 
 class App extends Component {
     onPopoverClick = function(data) {
+        const [index, setIndex] = useState(0);
+        const [direction, setDirection] = useState(null);
+
+        const handleSelect = (selectedIndex, e) => {
+            setIndex(selectedIndex);
+            setDirection(e.direction);
+        };
         return (
-            <div className="popover">
-                <div className="image-container">
-                    <img src={data.image} alt={data.name} height="185" width="263" />
-                </div>
-                <div className="extra-info-container">
+            <div className="p-2">
+                <Carousel activeIndex={index} direction={direction} onSelect={handleSelect}>
+                    <Carousel.Item>
+                        <img src={data.image} alt={data.name} height="185" width="263" />
+                    </Carousel.Item>
+                </Carousel>
+                <div className="extra-info-container text-left">
                     <div className="type-container info">
-                        {data.room_type}-{data.beds} bed
+                        {data.room_type}-{data.beds} bed(s)
                     </div>
                     <div className="name-container info">{data.name}</div>
                     <div className="price-container info">
-                        ${data.price} per night-Free cancellation
+                        ${data.price} per month
                     </div>
                 </div>
             </div>
@@ -56,15 +67,16 @@ class App extends Component {
                                             end: 10000
                                         }}
                                         rangeLabels={{
-                                            start: "$500",
-                                            end: "$10000"
+                                            start: "Low",
+                                            end: "High"
                                         }}
                                         defaultValue={{
                                             start: 500,
                                             end: 10000
                                         }}
-                                        stepValue={10}
-                                        interval={20}
+                                        stepValue={1}
+                                        interval={2}
+                                        // showFilter={true}
                                         react={{
                                             and: ["DateRangeSensor", "GuestSensor"]
                                         }}
@@ -123,10 +135,19 @@ class App extends Component {
                             <DataSearch
                                 componentId="search"
                                 dataField="name"
-                                autosuggest={false}
+                                autosuggest={true}
                                 placeholder="Search Leasr..."
                                 iconPosition="right"
                                 className="search"
+                                icon={
+                                    <img
+                                        alt="Search"
+                                        src={searchimg}
+                                        width="20"
+                                        height="20"
+                                        className="pb-2"
+                                    />
+                                }
                             />
                         </div>
                     </div>
@@ -145,12 +166,18 @@ class App extends Component {
                             height: "100vh"
                         }}
                         onPopoverClick={this.onPopoverClick}
-                        className="rightCol"
+                        // className="rightCol"
                         showMarkerClusters={false}
                         showSearchAsMove={false}
                         innerClass={{
                             label: "label"
                         }}
+                        renderError={(error) => (
+                            <div>
+                                Something went wrong!<br/>Error details<br/>{error}
+                            </div>
+                        )}   
+                        defaultMapStyle="Flat Map"
                         renderAllData={(
                             hits,
                             streamHits,
