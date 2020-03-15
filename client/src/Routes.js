@@ -6,6 +6,7 @@ import Jumbo from './Components/Home/Jumbo';
 import Search from './Components/Listing';
 import About from './Components/Extras/About';
 import Meet from './Components/Extras/Meet';
+import Social from './Components/Extras/Social';
 import NotFound from "./NotFound.js";
 import AppliedRoute from "./Components/AppliedRoute";
 import Signup from "./Components/Account/Signup";
@@ -26,6 +27,7 @@ export default function Routes({ appProps }) {
             <AppliedRoute path="/search" exact component={Search} appProps={appProps} />
             <AppliedRoute path="/about" exact component={About} appProps={appProps} />
             <AppliedRoute path="/meet" exact component={Meet} appProps={appProps} />
+            <AppliedRoute path="/social" exact component={Social} appProps={appProps} />
             <UnauthenticatedRoute path="/login/reset" exact component={ResetPassword} props={appProps} />
             <AuthenticatedRoute path="/settings" exact component={Settings} props={appProps} />
             <AuthenticatedRoute path="/settings/password" exact component={ChangePassword} props={appProps} />

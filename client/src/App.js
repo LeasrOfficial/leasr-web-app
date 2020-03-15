@@ -113,7 +113,7 @@ function App() {
                                   height="20"
                                   alt="Team icon"
                               />
-                              <Link className="text-success" href="#!">Social Media</Link>
+                              <Link className="text-success" to="/social">Social Media</Link>
                           </li>
                           <li>
                               <img className="pr-1 thumbnail-image" 

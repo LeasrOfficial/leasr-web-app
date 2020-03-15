@@ -130,6 +130,7 @@ class App extends Component {
                         <div className="search-container">
                             <DataSearch
                                 componentId="search"
+                                URLParams
                                 dataField="name"
                                 autosuggest={true}
                                 placeholder="Search Leasr..."
@@ -141,7 +142,7 @@ class App extends Component {
                                         src={searchimg}
                                         width="20"
                                         height="20"
-                                        className="pb-2"
+                                        className="mb-4"
                                     />
                                 }
                             />
