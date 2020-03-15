@@ -30,19 +30,19 @@ export class Jumbo extends React.Component {
                         <h1 className="text-light mx-auto w-50 p-5 mb-5">Finding a sublease is one click away.</h1>
                         <div className="w-50 mx-auto pt-5">
                             <DataSearch
-                                componentId="search"
+                                componentId="q"
                                 dataField="name"
                                 autosuggest={true}
                                 placeholder="Enter an address, neighborhood, city, or ZIP code"
                                 iconPosition="right"
                                 className="search mx-auto"
-                                onValueSelected={(val) => this.props.history.push("/search?search=" + val)}
+                                onValueSelected={(val) => this.props.history.push(`/search?q="${val}"`)}
                                 icon={
                                     <img
                                         alt="Search"
                                         src={searchimg}
-                                        width="20"
-                                        height="20"
+                                        width="18"
+                                        height="18"
                                         className="mb-4"
                                     />
                                 }
