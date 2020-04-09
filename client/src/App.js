@@ -65,7 +65,7 @@ function App() {
               <Link className="pl-4 text-success ml-auto">Create Listing</Link>
               {isAuthenticated
                 ? <>
-                    <Link className="pl-4 text-success" to="/settings"><NavItem>Settings</NavItem></Link>
+                    <Link className="pl-4 text-success" to="/settings"><NavItem>Account</NavItem></Link>
                     <Link className="pl-4 text-success" to="/"><NavItem onClick={handleLogout}>Logout</NavItem></Link>
                   </>
                 : <>
