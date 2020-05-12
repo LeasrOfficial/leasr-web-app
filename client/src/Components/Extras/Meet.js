@@ -32,18 +32,6 @@ class Meet extends React.Component {
                         <Figure.Image
                             width={200}
                             height={220}
-                            alt="Ben"
-                            src={mitch}
-                        />
-                        <h5>Ben Dreyer</h5>
-                        <Figure.Caption className="text-success">
-                            Co-Founder &amp; SWE
-                        </Figure.Caption>
-                    </Figure>
-                    <Figure className="text-left p-5">
-                        <Figure.Image
-                            width={200}
-                            height={220}
                             alt="Paul"
                             src={mitch}
                         />

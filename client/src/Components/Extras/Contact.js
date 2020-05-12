@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-class About extends React.Component {
+class Contact extends React.Component {
     render() {
         return (
             <div className="stylish-color-dark w-75 mx-auto p-5 text-left" style={{ position: 'relative', backgroundSize: 'cover', height: '60vh' }}>
@@ -21,4 +21,4 @@ class About extends React.Component {
     }
 }
 
-export default About;
+export default Contact;

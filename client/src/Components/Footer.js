@@ -45,7 +45,7 @@ class Footer extends React.Component {
                                         height="20"
                                         alt="Team icon"
                                     />
-                                    <Link className="text-success" href="#!">Social Media</Link>
+                                    <Link className="text-success" to="/social">Social Media</Link>
                                 </li>
                                 <li>
                                     <img className="pr-1 thumbnail-image" 
@@ -54,7 +54,7 @@ class Footer extends React.Component {
                                         height="20"
                                         alt="Team icon"
                                     />
-                                    <Link className="text-success" href="#!">Contact Us</Link>
+                                    <Link className="text-success" to="/contact-us">Contact Us</Link>
                                 </li>
                             </ul>
                         </div>
@@ -63,47 +63,17 @@ class Footer extends React.Component {
                             <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Support</h5>
                             <ul className="list-unstyled">
                                 <li>
-                                    <Link className="text-success" href="#!">Troubleshoot</Link>
-                                </li>
-                                <li>
                                     <Link className="text-success" href="#!">Common Questions</Link>
                                 </li>
                                 <li>
-                                    <Link className="text-success" href="#!">Report a Bug</Link>
-                                </li>
-                                <li>
-                                    <Link className="text-success" href="#!">Get Help</Link>
-                                </li>
-                            </ul>
-                        </div>
-                        <hr className="clearfix w-100 d-md-none" />
-                        <div className="col-md-2 mx-auto">
-                            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Useful Links</h5>
-                            <ul className="list-unstyled">
-                                <li>
-                                    <Link className="text-success" href="#!">Create a Lease</Link>
-                                </li>
-                                <li>
-                                    <Link className="text-success" href="#!">Manage a Lease</Link>
-                                </li>
-                                <li>
-                                    <Link className="text-success" href="#!">Terms of Use</Link>
-                                </li>
-                                <li>
-                                    <Link className="text-success" href="#!">Privacy Policy</Link>
+                                    <Link className="text-success" to="/report-bug">Report a Bug</Link>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <hr />
-                <ul className="list-unstyled list-inline text-center pt-2">
-                    <li className="list-inline-item">
-                        <Link className="btn btn-success btn-rounded" to="/signup">Become a Leasr!</Link>
-                    </li>
-                </ul>
                 <div className="bg-secondary text-white footer-copyright text-center py-3">© 2020 Copyright:
-                    <Link className="text-success" to="/"> Leasr.com</Link>
+                    <Link className="text-success" to="/"> subleasr.net</Link>
                 </div>
             </footer>
         );
