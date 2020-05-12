@@ -12,6 +12,8 @@ import { Auth } from "aws-amplify";
 
 export default function Signup(props) {
   const [fields, handleFieldChange] = useFormFields({
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -21,6 +23,8 @@ export default function Signup(props) {
 
   function validateForm() {
     return (
+      fields.firstName.length > 0 &&
+      fields.lastName.length > 0 &&
       fields.email.length > 0 &&
       fields.password.length > 0 &&
       fields.password === fields.confirmPassword
@@ -36,6 +40,8 @@ export default function Signup(props) {
   
     try {
       const newUser = await Auth.signUp({
+        name: fields.firstName,
+        family_name: fields.lastName,
         username: fields.email,
         password: fields.password
       });
@@ -96,7 +102,31 @@ export default function Signup(props) {
         <div className="p-5 auth-inner">
           <form onSubmit={handleSubmit}>
             <h3 className="text-left pb-4">Sign up for an account</h3>
-          
+
+            <FormGroup bsSize="large" className="text-left">
+              <h5>First Name</h5>
+              <FormControl
+                
+                placeholder="Enter your name"
+                type="text"
+                value={fields.firstName}
+                onChange={handleFieldChange}
+                className="p-2"
+              />
+            </FormGroup>
+
+            <FormGroup bsSize="large" className="text-left">
+              <h5>Family Name</h5>
+              <FormControl
+                
+                placeholder="Enter your family name"
+                type="text"
+                value={fields.lastName}
+                onChange={handleFieldChange}
+                className="p-2"
+              />
+            </FormGroup>
+
             <FormGroup controlId="email" bsSize="large" className="text-left">
               <h5>Email</h5>
               <FormControl
